@@ -1,1 +1,113 @@
 Coloque aqui todas as respostas das práticas indicadas no README.md
+
+Questão 1 - 
+    Qual a sua rede e máscara?
+        mascara: 255.255.0.0
+        rede: eth0
+    Qual o seu roteador padrão (default gateway)?
+        gateway: 0.0.0.0
+    Quantas rotas configuradas tem seu computador?
+        2 rotas - uma de loopback e outra do docker
+
+Questão 2 - 
+    Qual o IP da interface de rede?
+        172.18.0.2/16    
+    Qual a rede e a máscara?
+        mascara: 172.18.255.255
+        rede: inet 
+    Qual o nome da interface de rede principal?
+        eth0@if18
+
+
+Questão 3 - 
+    O nslookup é usado para traduzir nomes de domínio para seus respectivos endereços IP, consultando servidores DNS.
+    Descubra o endereço IP dos seguintes domínios e informe no arquivo de respostas:    
+
+    nslookup www.google.com
+        Address: 172.217.30.68
+
+    nslookup www.whitehouse.gov
+        Address: 192.0.66.51
+
+    nslookup www.rnp.br
+        Non-authoritative answer:
+        Name:   www.rnp.br
+        Address: 104.18.26.22
+        Name:   www.rnp.br
+        Address: 104.18.27.22
+        Name:   www.rnp.br
+        Address: 2606:4700::6812:1b16
+        Name:   www.rnp.br
+        Address: 2606:4700::6812:1a16
+
+    nslookup www.ufpb.br
+        Address: 150.165.254.52
+
+Questão 4 - 
+    Teste a conectividade da sua rede local:
+
+        Pingue a interface de loopback: ping 127.0.0.1. Qual o tempo de resposta?
+            tempo de resposta: 0.112 ms
+        Pingue seu próprio endereço IP dentro do container. Qual o tempo de resposta?
+            tempo de resposta: 0.115 ms
+
+        Teste a conectividade com a Internet:
+
+        ping www.ufpb.br
+            11 packets transmitted, 11 packets received, 0% packet loss
+            round-trip min/avg/max/stddev = 28.654/81.863/207.549/56.612 ms
+
+        ping www.yahoo.com
+            11 packets transmitted, 10 packets received, 9% packet loss
+            round-trip min/avg/max/stddev = 57.817/126.928/301.185/86.133 ms
+
+        ping www.brasil.gov.br
+            11 packets transmitted, 11 packets received, 0% packet loss
+            round-trip min/avg/max/stddev = 77.226/132.309/238.909/58.425 ms
+
+        ping www.dce.ufpb.br
+            ping: unknown host
+
+        Quais os tempos de resposta para cada um dos sites. Algum estava inacessível, qual mensagem apareceu?
+            www.ufpb.br - tempo de resposta: 81.863 ms
+            www.yahoo.com - tempo de resposta: 126.928 ms
+            www.brasil.gov.br - tempo de resposta: 132.309 ms
+            desses sites testados, o único que estava inacessível foi o www.dce.ufpb.br, mostrou a mensagem: ping: unknown host
+        
+
+        Analise os tempos de resposta:
+
+        Compare os tempos de resposta para diferentes sites:
+        ping www.google.com
+            tempo de resposta: 77.943 ms
+        ping www.rnp.br
+            tempo de resposta: 96.551 ms
+        ping www.whitehouse.gov
+            tempo de resposta: 71.684 ms
+
+        O que pode influenciar as diferenças nos tempos?
+            pode ser por causa das localizações dos servidores. se em algum domínio tiver conexão num servidor fora do Brasil, o tempo de resposta provavelmente 
+            será maior comparado a um dominio com todos os servidores no Brasil.
+
+Questão 5 - 
+    Por que alguns roteadores ao longo do caminho não respondem?
+        por que alguns roteadores são configurados para não mostrar suas informações
+    
+    
+    Isso significa necessariamente que há um problema na rede?
+        pode ser que aconteça algum problema na rede, mas necessariamente não significa problema na rede.
+
+Questão 6 - 
+    Os resultados são os mesmos do comando route?
+        basicamente as mesmas informações, mas o netstat mostra alguma informação a mais , como o protocolo tcp e udp e o gateway do route mostra o ip,
+        no netstat mostra o nome do computador
+    Há informações adicionais?
+        sim, o protocolo tcp e udp
+
+Questão 7 - 
+
+    O servidor respondeu? O serviço está ativo?
+        não houve resposta. acredito que o serviço não esteja ativo
+
+   - Você conseguiu conexão? Se não, como diferenciar um problema de rede de um problema no serviço?
+        não, o serviço não está ativo.
